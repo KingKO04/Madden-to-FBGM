@@ -15,3 +15,7 @@ jobs:
     - run: pip install -r requirements.txt
     - run: pytest tests/
     - run: python madden_to_football_gm.py
+    - run: git config --global user.name "KingKO04"
+    - run: git config --global user.email "mancity4everafter@gmail.com"
+    - run: git add "Madden 25 to Football GM.json"
+    - run: git diff --cached --quiet || (git commit -m "Update JSON file" && git push)
