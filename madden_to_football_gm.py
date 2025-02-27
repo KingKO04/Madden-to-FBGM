@@ -262,9 +262,9 @@ for player in players_dict:
 
   fbgm_players[i]['ratings'] = ratings
 
-player_ratings = pd.read_csv("PlayerRatings.csv")
+player_ratings = pd.read_csv("/PlayerRatings/PlayerRatings.csv")
 for i in range(1, 19):
-  temp = pd.read_csv(f"PlayerRatings ({i}).csv")
+  temp = pd.read_csv(f"/PlayerRatings/PlayerRatings ({i}).csv")
   player_ratings = pd.concat([player_ratings, temp], ignore_index=True)
 
 player_ratings = player_ratings.iloc[:, range(9, 29)]
