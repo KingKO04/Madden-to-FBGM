@@ -1,0 +1,17 @@
+name: Run script weekly
+
+on:
+  schedule:
+    - cron: '0 1 * * 4'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run
+      run: |
+        python "Madden to Football GM.py"
