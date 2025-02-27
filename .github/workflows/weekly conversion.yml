@@ -9,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Run
-      run: |
-        python "Madden to Football GM.py"
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+    - run: pip install -r requirements.txt
+    - run: pytest tests/ --verbose
+    - run: python "Madden to Football GM.py"
