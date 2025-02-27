@@ -10,8 +10,6 @@ Original file is located at
 import requests
 import time
 from bs4 import BeautifulSoup
-import statistics
-import threading
 import concurrent.futures
 import json
 import numpy as np
@@ -29,9 +27,6 @@ def process_player(name, profile_url):
 
     # Get all elements with the shared class
     attributes = profile_soup.find_all("span", class_="Typography_typography___mliz generated_body2__P92dE Typography_margins__GGnT6")  # Update class
-
-    # Initialize placeholders
-    teams, heights, weights = "Unknown", "Unknown", "Unknown"
 
     # Process attributes in order
     extracted = [attr.text.strip() for attr in attributes]
