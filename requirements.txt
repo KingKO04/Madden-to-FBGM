@@ -1,6 +1,5 @@
 requests
 beautifulsoup4
-concurrent-futures  # This is included in Python's standard library, so it's usually not needed
 numpy
 scipy
 pandas
