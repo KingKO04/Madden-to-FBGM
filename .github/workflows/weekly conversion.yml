@@ -20,6 +20,6 @@ jobs:
     - run: git add "Madden 25 to Football GM.json"
     - run: git diff --cached --quiet || git commit -m "Update JSON file"
     - run: |
-       git push https://github.com/${{ github.repository }} HEAD:main
+       git push origin HEAD:main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
