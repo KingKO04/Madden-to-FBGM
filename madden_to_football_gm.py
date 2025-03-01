@@ -213,14 +213,14 @@ for player in players_dict:
                                 .15 * int(current['Throw Under Pressure']) +
                                 .1 * int(current['Break Sack']) +
                                 .1 * int(current['BC Vision']) +
-                                .1 * int(current['Throw On The Run'])))
+                                .1 * int(current['Throw on the Run'])))
   ratings[0]['thp'] = int(round(.85 * int(current['Throw Power']) +
                                 .1 * int(current['Strength']) +
                                 .05 * int(current['Throw Accuracy Deep'])))
   ratings[0]['tha'] = int(round(.4 * int(current['Throw Accuracy Short']) +
                                 .3 * int(current['Throw Accuracy Mid']) +
                                 .15 * int(current['Throw Accuracy Deep']) +
-                                .1 * int(current['Throw On The Run']) +
+                                .1 * int(current['Throw on the Run']) +
                                 .05 * int(current['Play Action'])))
   ratings[0]['bsc'] = int(current['Carrying'])
   ratings[0]['elu'] = int(round(.2 * int(current['Juke Move']) +
