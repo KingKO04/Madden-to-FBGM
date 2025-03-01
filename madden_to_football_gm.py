@@ -191,19 +191,14 @@ for player in players_dict:
 
   ratings = [{}]
   ratings[0]['hgt'] = int(round((fbgm_players[i]['hgt'] - 64) / 18 * 100))
-  ratings[0]['stre'] = int(round(.5 * int(current['Strength']) +
-                                 .1 * int(current['Trucking']) +
-                                 .1 * int(current['Break Tackle']) +
-                                 .1 * int(current['Impact Blocking']) +
-                                 .1 * int(current['Tackle']) +
-                                 .05 * int(current['Break Sack']) +
-                                 .05 * int(current['Stiff Arm'])))
-  ratings[0]['spd'] = int(round(.5 * int(current['Speed']) +
-                                .2 * int(current['Acceleration']) +
-                                .1 * int(current['Agility']) +
+  ratings[0]['stre'] = int(round(.71 * int(current['Strength']) +
+                                 .15 * int(current['Trucking']) +
+                                 .14 * int(current['Impact Blocking'])))
+  ratings[0]['spd'] = int(round(.53 * int(current['Speed']) +
+                                .21 * int(current['Acceleration']) +
+                                .11 * int(current['Agility']) +
                                 .1 * int(current['Change Of Direction']) +
-                                .05 * int(current['Pursuit']) +
-                                .05 * int(current['Kick Return'])))
+                                .05 * int(current['Pursuit'])))
   ratings[0]['endu'] = int(round(.8 * int(current['Stamina']) +
                                  .1 * int(current['Toughness']) +
                                  .05 * int(current['Strength']) +
@@ -223,15 +218,13 @@ for player in players_dict:
                                 .1 * int(current['Throw on the Run']) +
                                 .05 * int(current['Play Action'])))
   ratings[0]['bsc'] = int(current['Carrying'])
-  ratings[0]['elu'] = int(round(.2 * int(current['Juke Move']) +
-                               .15 * int(current['Spin Move']) +
-                               .15 * int(current['Change Of Direction']) +
-                               .1 * int(current['Break Tackle']) +
-                               .1 * int(current['Acceleration']) +
-                               .1 * int(current['Throw Under Pressure']) +
-                               .1 * int(current['Break Sack']) +
-                               .05 * int(current['Agility']) +
-                               .05 * int(current['BC Vision'])))
+  ratings[0]['elu'] = int(round(.25 * int(current['Juke Move']) +
+                               .19 * int(current['Spin Move']) +
+                               .19 * int(current['Change Of Direction']) +
+                               .13 * int(current['Break Tackle']) +
+                               .12 * int(current['Acceleration']) +
+                               .06 * int(current['Agility']) +
+                               .06 * int(current['BC Vision'])))
   ratings[0]['rtr'] = int(round(.3 * int(current['Short Route Running']) +
                                 .3 * int(current['Medium Route Running']) +
                                 .2 * int(current['Deep Route Running']) +
