@@ -199,39 +199,65 @@ for player in players_dict:
       fbgm_players[i]['pos'] = "P"
 
   ratings = [{}]
-  ratings[0]['hgt'] = int(round((fbgm_players[i]['hgt'] - 64) / 18 * 100))
-  ratings[0]['stre'] = int(current['Strength'])
-  ratings[0]['spd'] = int(round(.6 * int(current['Speed']) +
-                                .4 * int(current['Acceleration'])))
-  ratings[0]['endu'] = int(round(.6 * int(current['Stamina']) +
-                                .2 * int(current['Toughness']) +
-                                .2 * int(current['Injury'])))
-  ratings[0]['thv'] = int(round(.67 * int(current['Awareness']) +
-                                .33 * int(current['Play Action'])))
-  ratings[0]['thp'] = int(current['Throw Power'])
+  ratings[0]['hgt'] = int(round(.5 * ((fbgm_players[i]['hgt'] - 64) / 18 * 100) +
+                               .15 * int(current['Jumping']) +
+                               .1 * int(current['Strength']) +
+                               .05 * int(current['Awareness']) +
+                               .05 * int(current['Catch In Traffic']) +
+                               .05 * int(current['Throw Power']) +
+                               .05 * int(current['Pass Block']) +
+                               .025 * int(current['Power Moves']) +
+                               .025 * int(current['Finesse Moves'])))
+  ratings[0]['stre'] = int(round(.5 * int(current['Strength']) +
+                                 .1 * int(current['Trucking']) +
+                                 .1 * int(current['Break Tackle']) +
+                                 .1 * int(current['Impact Blocking']) +
+                                 .1 * int(current['Tackle']) +
+                                 .05 * int(current['Break Sack']) +
+                                 .05 * int(current['Stiff Arm'])))
+  ratings[0]['spd'] = int(round(.5 * int(current['Speed']) +
+                                .2 * int(current['Acceleration']) +
+                                .1 * int(current['Agility']) +
+                                .1 * int(current['Change Of Direction']) +
+                                .05 * int(current['Pursuit']) +
+                                .05 * int(current['Kick Return'])))
+  ratings[0]['endu'] = int(round(.8 * int(current['Stamina']) +
+                                 .1 * int(current['Toughness']) +
+                                 .05 * int(current['Strength']) +
+                                 .05 * int(current['Injury'])))
+  ratings[0]['thv'] = int(round(.4 * int(current['Awareness']) +
+                                .15 * int(current['Play Action']) +
+                                .15 * int(current['Throw Under Pressure']) +
+                                .1 * int(current['Break Sack']) +
+                                .1 * int(current['BC Vision']) +
+                                .1 * int(current['Throw On The Run'])))
+  ratings[0]['thp'] = int(round(.85 * int(current['Throw Power']) +
+                                .1 * int(current['Strength']) +
+                                .05 * int(current['Throw Accuracy Deep'])))
   ratings[0]['tha'] = int(round(.4 * int(current['Throw Accuracy Short']) +
                                 .3 * int(current['Throw Accuracy Mid']) +
-                                .3 * int(current['Throw Accuracy Deep'])))
-  ratings[0]['bsc'] = int(round(.5 * int(current['Carrying']) +
-                                .15 * int(current['Awareness']) +
-                                .15 * int(current['BC Vision']) +
-                                .1 * int(current['Toughness']) +
-                                .1 * int(current['Trucking'])))
-  ratings[0]['elu'] = int(round(.26 * int(current['Juke Move']) +
-                                .22 * int(current['Spin Move']) +
-                                .17 * int(current['Change Of Direction']) +
-                                .15 * int(current['Break Tackle']) +
-                                .1 * int(current['Agility']) +
-                                .1 * int(current['Trucking'])))
-  ratings[0]['rtr'] = int(round(.28 * int(current['Short Route Running']) +
-                                .28 * int(current['Medium Route Running']) +
-                                .24 * int(current['Deep Route Running']) +
-                                .2 * int(current['Release'])))
-  ratings[0]['hnd'] = int(round(.4 * int(current['Catching']) +
-                                .2 * int(current['Catch In Traffic']) +
-                                .2 * int(current['Spectacular Catch']) +
-                                .1 * int(current['Awareness']) +
-                                .1 * int(current['Jumping'])))
+                                .15 * int(current['Throw Accuracy Deep']) +
+                                .1 * int(current['Throw On The Run']) +
+                                .05 * int(current['Play Action'])))
+  ratings[0]['bsc'] = int(current['Carrying'])
+  ratings[0]['elu'] = int(round(.2 * int(current['Juke Move']) +
+                               .15 * int(current['Spin Move']) +
+                               .15 * int(current['Change Of Direction']) +
+                               .1 * int(current['Break Tackle']) +
+                               .1 * int(current['Acceleration']) +
+                               .1 * int(current['Throw Under Pressure']) +
+                               .1 * int(current['Break Sack']) +
+                               .05 * int(current['Agility']) +
+                               .05 * int(current['BC Vision'])))
+  ratings[0]['rtr'] = int(round(.3 * int(current['Short Route Running']) +
+                                .3 * int(current['Medium Route Running']) +
+                                .2 * int(current['Deep Route Running']) +
+                                .1 * int(current['Change Of Direction']) +
+                                .05 * int(current['Agility']) +
+                                .05 * int(current['Release'])))
+  ratings[0]['hnd'] = int(round(.75 * int(current['Catching']) +
+                                .18 * int(current['Catch In Traffic']) +
+                                .07 * int(current['Spectacular Catch'])))
   ratings[0]['rbk'] = int(round(.4 * int(current['Run Block']) +
                                 .2 * int(current['Run Block Power']) +
                                 .2 * int(current['Run Block Finesse']) +
@@ -243,9 +269,12 @@ for player in players_dict:
                                 .4 * int(current['Zone Coverage']) +
                                 .1 * int(current['Press']) +
                                 .1 * int(current['Play Recognition'])))
-  ratings[0]['tck'] = int(round(.5 * int(current['Tackle']) +
-                                .3 * int(current['Hit Power']) +
-                                .2 * int(current['Pursuit'])))
+  ratings[0]['tck'] = int(round(.6 * int(current['Tackle']) +
+                                .15 * int(current['Hit Power']) +
+                                .1 * int(current['Pursuit']) +
+                                .1 * int(current['Block Shedding']) +
+                                .03 * int(current['Finesse Moves']) +
+                                .02 * int(current['Power Moves'])))
   ratings[0]['prs'] = int(round(.6 * int(current['Block Shedding']) +
                                 .3 * int(current['Finesse Moves']) +
                                 .1 * int(current['Power Moves'])))
