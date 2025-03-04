@@ -316,7 +316,7 @@ divs = [
 ]
 
 gameAttributes = {
-    "completionFactor": .907,
+    "completionFactor": .95,
     "confs": confs,
     "divs": divs,
     "draftAges": [20, 26],
@@ -324,6 +324,8 @@ gameAttributes = {
     "draftPickAutoContractPercent": 20,
     "draftPickAutoContractRounds": 7,
     "fantasyPoints": "ppr",
+    "fourthDownFactor": 1.15,
+    "intFactor": .9,
     "luxuryPayroll": 330000,
     "maxContract": 60000,
     "maxRosterSize": 53,
