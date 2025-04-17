@@ -19,7 +19,7 @@ jobs:
     - run: git config --global user.email "mancity4everafter@gmail.com"
     - run: git add "Madden 25 to Football GM.json"
     - run: git diff --cached --quiet || git commit -m "Update JSON file"
-    - run: |
-       git push origin HEAD:main
-    - env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push changes
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: git push origin HEAD:main
