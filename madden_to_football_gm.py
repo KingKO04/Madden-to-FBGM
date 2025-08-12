@@ -70,7 +70,7 @@ for page_num in range(1, 22):
       profile_link = base_url + player["href"]  # Construct full URL
       player_profiles[name] = profile_link
 
-with concurrent.futures.ThreadPoolExecutor(max_workers=15) as executor:  # Adjust max_workers as needed
+with concurrent.futures.ThreadPoolExecutor(max_workers=15) as executor:
     futures = [executor.submit(process_player, name, profile_url) for name, profile_url in player_profiles.items()]
 
     for future in concurrent.futures.as_completed(futures):
@@ -176,10 +176,10 @@ for player in players_dict:
       fbgm_players[i]['pos'] = "TE"
     case "Left Tackle" | "Left Guard" | "Center" | "Right Guard" | "Right Tackle":
       fbgm_players[i]['pos'] = "OL"
-    case "Left Defensive End" | "Defensive Tackle" | "Right Defensive End":
+    case "Left Edge" | "Defensive Tackle" | "Right Edge":
       fbgm_players[i]['pos'] = "DL"
-    case "Left Outside Linebacker" | "Middle Linebacker" | "Right Outside Linebacker":
-      fbgm_players[i]['pos'] = "DL" if "Rusher" in current['Archetype'] else "LB"
+    case "Weak Backer" | "Middle Linebacker" | "Sam Backer":
+      fbgm_players[i]['pos'] = "LB"
     case "Cornerback":
       fbgm_players[i]['pos']= "CB"
     case "Strong Safety" | "Free Safety":
