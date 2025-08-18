@@ -178,7 +178,7 @@ for player in players_dict:
       fbgm_players[i]['pos'] = "OL"
     case "Left Edge" | "Defensive Tackle" | "Right Edge":
       fbgm_players[i]['pos'] = "DL"
-    case "Weak Backer" | "Middle Linebacker" | "Sam Backer":
+    case "Weak Backer" | "Mike Backer" | "Sam Backer":
       fbgm_players[i]['pos'] = "LB"
     case "Cornerback":
       fbgm_players[i]['pos']= "CB"
