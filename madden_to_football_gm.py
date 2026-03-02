@@ -12,18 +12,18 @@ def process_player(name, profile_url):
     profile_soup = BeautifulSoup(profile_response.text, "html.parser")
 
     # Extract rating names and values
-    rating_names = profile_soup.find_all("span", class_="Stat_label__faUgX")
-    rating_values = profile_soup.find_all("span", class_="Stat_value__TT86G")
-    images = profile_soup.find_all("img", class_="Picture_image__L8suG")
+    rating_names = profile_soup.find_all("span", class_="Stat_label__1Hyo7")
+    rating_values = profile_soup.find_all("span", class_="Stat_value__sh6gl")
+    images = profile_soup.find_all("img", class_="Picture_image__v6C_5")
 
     # Get all elements with the shared class
-    attributes = profile_soup.find_all("span", class_="Typography_typography___mliz generated_body2__P92dE Typography_margins__GGnT6")  # Update class
+    attributes = profile_soup.find_all("span", class_="Typography_typography__BbhVA generated_body2__1oQ_U Typography_margins__Rl7Bs")  # Update class
 
     # Process attributes in order
     extracted = [attr.text.strip() for attr in attributes]
 
     ratings_dict = {}
-    ratings_dict['Image'] = images[2]["src"]
+    ratings_dict['Image'] = images[1]["src"]
     ratings_dict['Position'] = extracted[0]
     ratings_dict['Team'] = extracted[1]
     ratings_dict['Height'] = extracted[2]
@@ -63,7 +63,7 @@ for page_num in range(1, 22):
   soup = BeautifulSoup(response.text, "html.parser")
 
   # Find player profile links
-  players = soup.find_all("a", class_="Table_profileCellAnchor__Zj6g4")
+  players = soup.find_all("a", class_="Table_profileCellAnchor__3zq_D")
 
   for player in players:
       name = player.text.strip()
