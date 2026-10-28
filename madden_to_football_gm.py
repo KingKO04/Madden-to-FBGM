@@ -11,10 +11,10 @@ from playwright.sync_api import sync_playwright
 
 
 def process_player(name, profile_url, playwright_instance):
-    browser = playwright_instance.chromium.launch(headless=True)
+    browser = playwright_instance.chromium.launch(headless=True, args = ["--disable-http2"])
     page = browser.new_page()
 
-    page.goto(profile_url, wait_until="networkidle", timeout = 60000)
+    page.goto(profile_url, wait_until="domcontentloaded", timeout = 60000)
     profile_html = page.contet()
     browser.close()
 
