@@ -6,10 +6,19 @@ import json
 import numpy as np
 import scipy.stats as stats
 import pandas as pd
+import asyncio
+from playwright.sync_api import sync_playwright
 
-def process_player(name, profile_url):
-    profile_response = requests.get(profile_url, headers=headers)
-    profile_soup = BeautifulSoup(profile_response.text, "html.parser")
+
+def process_player(name, profile_url, playwright_instance):
+    browser = playwright_instance.chromium.launch(headless=True)
+    page = browser.new_page()
+
+    page.goto(profile_url, wait_until="networkidle", timeout = 60000)
+    profile_html = page.contet()
+    browser.close()
+
+    profile_soup = BeautifulSoup(profile_html, "html.parser")
 
     # Extract rating names and values
     rating_names = profile_soup.find_all("span", class_="Stat_label__1Hyo7")
@@ -57,25 +66,38 @@ headers = {"User-Agent": "Mozilla/5.0"}
 player_profiles = {}
 players_dict = {}
 
-for page_num in range(1, 22):
-  ratings_url = ratings_url_template.format(page_num)
-  response = requests.get(ratings_url, headers=headers)
-  soup = BeautifulSoup(response.text, "html.parser")
+with sync_playwright() as p:
+  browser = p.chromium.launch(headless=True)
+  page = browser.new_page()
 
-  # Find player profile links
-  players = soup.find_all("a", class_="Table_profileCellAnchor__3zq_D")
+  for page_num in range(1, 21):
+    ratings_url = ratings_url_template.format(page_num)
+    page.goto(ratings_url, wait_until="networkidle")
+    page.wait_for_selector("a.Table_profileCellAnchor__3zq_D", timeout=10000)
 
-  for player in players:
+    soup = BeautifulSoup(page.content(), "html.parser")
+    players = soup.find_all("a", class_= "Table_profileCellAnchor__3zq_D")
+
+    for player in players:
       name = player.text.strip()
-      profile_link = base_url + player["href"]  # Construct full URL
+      profile_link = base_url + player["href"]
       player_profiles[name] = profile_link
 
-with concurrent.futures.ThreadPoolExecutor(max_workers=15) as executor:
-    futures = [executor.submit(process_player, name, profile_url) for name, profile_url in player_profiles.items()]
+  browser.close()
 
-    for future in concurrent.futures.as_completed(futures):
-        name, ratings_dict = future.result()
-        players_dict[name] = ratings_dict
+with sync_playwright() as p:
+  def worker(item):
+    name, profile_url = item
+    pw = sync_playwright().start()
+    res_name, ratings = process_player(name, profile_url, pw)
+    return res_name, ratings
+
+  with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+      futures = [executor.submit(worker, item) for item in player_profiles.items()]
+
+      for future in concurrent.futures.as_completed(futures):
+          name, ratings_dict = future.result()
+          players_dict[name] = ratings_dict
 
 fbgm_players = []
 for player in players_dict:
