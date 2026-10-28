@@ -202,7 +202,7 @@ for player in players_dict:
   ratings[0]['thp'] = int(current['Throw Power'])
   ratings[0]['tha'] = int(round(.34 * int(current['Throw Accuracy Short']) +
                                 .33 * int(current['Throw Accuracy Mid']) +
-                                .33 * int(current['Throw Accuracy Deep'])
+                                .33 * int(current['Throw Accuracy Deep'])))
   ratings[0]['bsc'] = int(current['Carrying'])
   ratings[0]['elu'] = int(round(.58 * int(current['BC Vision']) +
                                .07 * int(current['Juke Move']) +
