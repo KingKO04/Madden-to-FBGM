@@ -2,24 +2,46 @@ name: Run script weekly
 
 on:
   schedule:
-    - cron: '0 1 * * 4'
+    - cron: '0 1 * * 4' # Runs every Thursday at 01:00 UTC
   workflow_dispatch:
+
+# Ensure workflow has write permissions to push git commits
+permissions:
+  contents: write
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
-    - run: pip install -r requirements.txt
-    - run: pytest tests/
-    - run: python madden_to_football_gm.py
-    - run: git config --global user.name "KingKO04"
-    - run: git config --global user.email "mancity4everafter@gmail.com"
-    - run: git add "Madden 27 to Football GM.json"
-    - run: git diff --cached --quiet || git commit -m "Update JSON file"
-    - name: Push changes
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: git push origin HEAD:main
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright Browsers & OS Dependencies
+        run: |
+          playwright install --with-deps chromium
+
+      - name: Run Tests
+        run: pytest tests/
+
+      - name: Run Madden Converter Script
+        run: python madden_to_football_gm.py
+
+      - name: Commit and Push output file
+        run: |
+          git config --global user.name "KingKO04"
+          git config --global user.email "mancity4everafter@gmail.com"
+          git add "Madden 27 to Football GM.json"
+          git diff --cached --quiet || (git commit -m "Update Madden ratings JSON" && git push)
