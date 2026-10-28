@@ -1,0 +1,593 @@
+{
+    "players": [],
+    "teams": [
+        {
+            "tid": 0,
+            "cid": 1,
+            "did": 7,
+            "region": "Arizona",
+            "name": "Cardinals",
+            "abbrev": "ARI",
+            "pop": 4.1,
+            "stadiumCapacity": 63400,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/ari.png",
+            "colors": [
+                "#97233F",
+                "#000000",
+                "#FFB612"
+            ]
+        },
+        {
+            "tid": 1,
+            "cid": 1,
+            "did": 6,
+            "region": "Atlanta",
+            "name": "Falcons",
+            "abbrev": "ATL",
+            "pop": 6.3,
+            "stadiumCapacity": 71000,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/atl.png",
+            "colors": [
+                "#A71930",
+                "#000000",
+                "#A5ACAF"
+            ]
+        },
+        {
+            "tid": 2,
+            "cid": 0,
+            "did": 1,
+            "region": "Baltimore",
+            "name": "Ravens",
+            "abbrev": "BAL",
+            "pop": 2.8,
+            "stadiumCapacity": 71008,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/bal.png",
+            "colors": [
+                "#241773",
+                "#000000",
+                "#9E7C0C"
+            ]
+        },
+        {
+            "tid": 3,
+            "cid": 0,
+            "did": 0,
+            "region": "Buffalo",
+            "name": "Bills",
+            "abbrev": "BUF",
+            "pop": 1.2,
+            "stadiumCapacity": 71608,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/buf.png",
+            "colors": [
+                "#0038D",
+                "#C60C30",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 4,
+            "cid": 1,
+            "did": 6,
+            "region": "Carolina",
+            "name": "Panthers",
+            "abbrev": "CAR",
+            "pop": 2.8,
+            "stadiumCapacity": 74867,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png",
+            "colors": [
+                "#0085CA",
+                "#101820",
+                "#BFC0BF"
+            ]
+        },
+        {
+            "tid": 5,
+            "cid": 1,
+            "did": 5,
+            "region": "Chicago",
+            "name": "Bears",
+            "abbrev": "CHI",
+            "pop": 9.3,
+            "stadiumCapacity": 61500,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/chi.png",
+            "colors": [
+                "#0B162A",
+                "#C83803",
+                "FFFFFF"
+            ]
+        },
+        {
+            "tid": 6,
+            "cid": 0,
+            "did": 1,
+            "region": "Cincinnati",
+            "name": "Bengals",
+            "abbrev": "CIN",
+            "pop": 2.3,
+            "stadiumCapacity": 65515,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/cin.png",
+            "colors": [
+                "#FB4F14",
+                "#000000",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 7,
+            "cid": 0,
+            "did": 1,
+            "region": "Cleveland",
+            "name": "Browns",
+            "abbrev": "CLE",
+            "pop": 2.2,
+            "stadiumCapacity": 67431,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/cle.png",
+            "colors": [
+                "#311D00",
+                "#FF3C00",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 8,
+            "cid": 1,
+            "did": 4,
+            "region": "Dallas",
+            "name": "Cowboys",
+            "abbrev": "DAL",
+            "pop": 8.1,
+            "stadiumCapacity": 100000,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/dal.png",
+            "colors": [
+                "#003594",
+                "#041E42",
+                "#869397"
+            ]
+        },
+        {
+            "tid": 9,
+            "cid": 0,
+            "did": 3,
+            "region": "Denver",
+            "name": "Broncos",
+            "abbrev": "DEN",
+            "pop": 3,
+            "stadiumCapacity": 76125,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/den.png",
+            "colors": [
+                "#FB4F14",
+                "#002244",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 10,
+            "cid": 1,
+            "did": 5,
+            "region": "Detroit",
+            "name": "Lions",
+            "abbrev": "DET",
+            "pop": 4.3,
+            "stadiumCapacity": 65000,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/det.png",
+            "colors": [
+                "#0076B6",
+                "#B0B7BC",
+                "#000000"
+            ]
+        },
+        {
+            "tid": 11,
+            "cid": 1,
+            "did": 5,
+            "region": "Green Bay",
+            "name": "Packers",
+            "abbrev": "GB",
+            "pop": 0.33,
+            "stadiumCapacity": 81441,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/gb.png",
+            "colors": [
+                "#203731",
+                "#FFB612",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 12,
+            "cid": 0,
+            "did": 2,
+            "region": "Houston",
+            "name": "Texans",
+            "abbrev": "HOU",
+            "pop": 7.5,
+            "stadiumCapacity": 72220,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/hou.png",
+            "colors": [
+                "#03202F",
+                "#A71930",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 13,
+            "cid": 0,
+            "did": 2,
+            "region": "Indianapolis",
+            "name": "Colts",
+            "abbrev": "IND",
+            "pop": 2.1,
+            "stadiumCapacity": 70000,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/ind.png",
+            "colors": [
+                "#002C5F",
+                "#A2AAAD",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 14,
+            "cid": 0,
+            "did": 2,
+            "region": "Jacksonville",
+            "name": "Jaguars",
+            "abbrev": "JAC",
+            "pop": 1.7,
+            "stadiumCapacity": 67814,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/jac.png",
+            "colors": [
+                "#101820",
+                "#D7A22A",
+                "#9F792C"
+            ]
+        },
+        {
+            "tid": 15,
+            "cid": 0,
+            "did": 3,
+            "region": "Kansas City",
+            "name": "Chiefs",
+            "abbrev": "KC",
+            "pop": 2.2,
+            "stadiumCapacity": 76416,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/kc.png",
+            "colors": [
+                "#E31837",
+                "#FFB81C",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 16,
+            "cid": 0,
+            "did": 3,
+            "region": "Las Vegas",
+            "name": "Raiders",
+            "abbrev": "LV",
+            "pop": 2.3,
+            "stadiumCapacity": 65000,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/lv.png",
+            "colors": [
+                "#000000",
+                "#A5ACAF",
+                "FFFFFF"
+            ]
+        },
+        {
+            "tid": 17,
+            "cid": 0,
+            "did": 3,
+            "region": "Los Angeles",
+            "name": "Chargers",
+            "abbrev": "LAC",
+            "pop": 12.8,
+            "stadiumCapacity": 70240,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/lac.png",
+            "colors": [
+                "#0080C6",
+                "#FFC20E",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 18,
+            "cid": 1,
+            "did": 7,
+            "region": "Los Angeles",
+            "name": "Rams",
+            "abbrev": "LAR",
+            "pop": 12.8,
+            "stadiumCapacity": 70240,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/lar.png",
+            "colors": [
+                "#003594",
+                "#FFA300",
+                "#FF8200"
+            ]
+        },
+        {
+            "tid": 19,
+            "cid": 0,
+            "did": 0,
+            "region": "Miami",
+            "name": "Dolphins",
+            "abbrev": "MIA",
+            "pop": 6.2,
+            "stadiumCapacity": 65000,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/mia.png",
+            "colors": [
+                "#008E97",
+                "#FC4C02",
+                "#005778"
+            ]
+        },
+        {
+            "tid": 20,
+            "cid": 1,
+            "did": 5,
+            "region": "Minnesota",
+            "name": "Vikings",
+            "abbrev": "MIN",
+            "pop": 3.7,
+            "stadiumCapacity": 66860,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/min.png",
+            "colors": [
+                "#4F2683",
+                "FFC62F",
+                "FFFFFF"
+            ]
+        },
+        {
+            "tid": 21,
+            "cid": 0,
+            "did": 0,
+            "region": "New England",
+            "name": "Patriots",
+            "abbrev": "NE",
+            "pop": 4.9,
+            "stadiumCapacity": 64628,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/ne.png",
+            "colors": [
+                "#002244",
+                "#C60C30",
+                "#B0B7BC"
+            ]
+        },
+        {
+            "tid": 22,
+            "cid": 1,
+            "did": 6,
+            "region": "New Orleans",
+            "name": "Saints",
+            "abbrev": "NO",
+            "pop": 0.96,
+            "stadiumCapacity": 73208,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/no.png",
+            "colors": [
+                "#D3BC8D",
+                "#101820",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 23,
+            "cid": 1,
+            "did": 4,
+            "region": "New York",
+            "name": "Giants",
+            "abbrev": "NYG",
+            "pop": 19.5,
+            "stadiumCapacity": 82500,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/nyg.png",
+            "colors": [
+                "#0B2265",
+                "#A71930",
+                "#A5ACAF"
+            ]
+        },
+        {
+            "tid": 24,
+            "cid": 0,
+            "did": 0,
+            "region": "New York",
+            "name": "Jets",
+            "abbrev": "NYJ",
+            "pop": 19.5,
+            "stadiumCapacity": 82500,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/nyj.png",
+            "colors": [
+                "#125740",
+                "#000000",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 25,
+            "cid": 1,
+            "did": 4,
+            "region": "Philadelphia",
+            "name": "Eagles",
+            "abbrev": "PHI",
+            "pop": 6.2,
+            "stadiumCapacity": 67594,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/phi.png",
+            "colors": [
+                "#004C54",
+                "#A5ACAF",
+                "#ACC0C6"
+            ]
+        },
+        {
+            "tid": 26,
+            "cid": 0,
+            "did": 1,
+            "region": "Pittsburgh",
+            "name": "Steelers",
+            "abbrev": "PIT",
+            "pop": 2.4,
+            "stadiumCapacity": 68400,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/pit.png",
+            "colors": [
+                "#FFB612",
+                "#101820",
+                "#003087"
+            ]
+        },
+        {
+            "tid": 27,
+            "cid": 1,
+            "did": 7,
+            "region": "San Francisco",
+            "name": "49ers",
+            "abbrev": "SF",
+            "pop": 4.6,
+            "stadiumCapacity": 68500,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/sf.png",
+            "colors": [
+                "#AA0000",
+                "#B3995D",
+                "#FFFFFF"
+            ]
+        },
+        {
+            "tid": 28,
+            "cid": 1,
+            "did": 7,
+            "region": "Seattle",
+            "name": "Seahawks",
+            "abbrev": "SEA",
+            "pop": 4,
+            "stadiumCapacity": 68740,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/sea.png",
+            "colors": [
+                "#002244",
+                "#69BE28",
+                "#A5ACAF"
+            ]
+        },
+        {
+            "tid": 29,
+            "cid": 1,
+            "did": 6,
+            "region": "Tampa Bay",
+            "name": "Buccaneers",
+            "abbrev": "TB",
+            "pop": 3.3,
+            "stadiumCapacity": 69218,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/tb.png",
+            "colors": [
+                "#D50A0A",
+                "#FF7900",
+                "#FF7900"
+            ]
+        },
+        {
+            "tid": 30,
+            "cid": 0,
+            "did": 2,
+            "region": "Tennessee",
+            "name": "Titans",
+            "abbrev": "TEN",
+            "pop": 2.1,
+            "stadiumCapacity": 69143,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/ten.png",
+            "colors": [
+                "#0C2340",
+                "#4B92DB",
+                "#C8102E"
+            ]
+        },
+        {
+            "tid": 31,
+            "cid": 1,
+            "did": 4,
+            "region": "Washington",
+            "name": "Commanders",
+            "abbrev": "WAS",
+            "pop": 6.3,
+            "stadiumCapacity": 62000,
+            "imgURL": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/was.png",
+            "colors": [
+                "#5A1414",
+                "#FFB612",
+                "#FFFFFF"
+            ]
+        }
+    ],
+    "gameAttributes": {
+        "completionFactor": 0.95,
+        "confs": [
+            {
+                "cid": 0,
+                "name": "AFC"
+            },
+            {
+                "cid": 1,
+                "name": "NFC"
+            }
+        ],
+        "divs": [
+            {
+                "did": 0,
+                "cid": 0,
+                "name": "East"
+            },
+            {
+                "did": 1,
+                "cid": 0,
+                "name": "North"
+            },
+            {
+                "did": 2,
+                "cid": 0,
+                "name": "South"
+            },
+            {
+                "did": 3,
+                "cid": 0,
+                "name": "West"
+            },
+            {
+                "did": 4,
+                "cid": 1,
+                "name": "East"
+            },
+            {
+                "did": 5,
+                "cid": 1,
+                "name": "North"
+            },
+            {
+                "did": 6,
+                "cid": 1,
+                "name": "South"
+            },
+            {
+                "did": 7,
+                "cid": 1,
+                "name": "West"
+            }
+        ],
+        "draftAges": [
+            20,
+            26
+        ],
+        "draftPickAutoContract": true,
+        "draftPickAutoContractPercent": 20,
+        "draftPickAutoContractRounds": 7,
+        "fantasyPoints": "ppr",
+        "fourthDownFactor": 1.15,
+        "intFactor": 0.9,
+        "luxuryPayroll": 330000,
+        "maxContract": 60000,
+        "maxRosterSize": 53,
+        "minContract": 850,
+        "minPayroll": 250000,
+        "minRosterSize": 46,
+        "numSeasonsFutureDraftPicks": 3,
+        "rookieContractLengths": [
+            4
+        ],
+        "salaryCap": 280000
+    }
+}
