@@ -72,7 +72,7 @@ with sync_playwright() as p:
 
   for page_num in range(1, 21):
     ratings_url = ratings_url_template.format(page_num)
-    page.goto(ratings_url, wait_until="networkidle")
+    page.goto(ratings_url, wait_until="domcontentloaded")
     page.wait_for_selector("a.Table_profileCellAnchor__3zq_D", timeout=10000)
 
     soup = BeautifulSoup(page.content(), "html.parser")
