@@ -86,8 +86,8 @@ for player in players_dict:
   name = player.split(' ', 1)
   fbgm_players[i]['firstName'] = name[0]
   fbgm_players[i]['lastName'] = name[1]
-  fbgm_players[i]['born'] = {"year" : 2024 - int(players_dict[player]['Age'])}
-  fbgm_players[i]['draft'] = {"year" : 2024 - int(players_dict[player]['Draft Year'])}
+  fbgm_players[i]['born'] = {"year" : 2026 - int(players_dict[player]['Age'])}
+  fbgm_players[i]['draft'] = {"year" : 2026 - int(players_dict[player]['Draft Year'])}
   fbgm_players[i]['college'] = current['College']
 
   match current['Team']:
@@ -191,46 +191,30 @@ for player in players_dict:
 
   ratings = [{}]
   ratings[0]['hgt'] = int(round((fbgm_players[i]['hgt'] - 64) / 18 * 100))
-  ratings[0]['stre'] = int(round(.71 * int(current['Strength']) +
-                                 .15 * int(current['Trucking']) +
-                                 .14 * int(current['Impact Blocking'])))
-  ratings[0]['spd'] = int(round(.53 * int(current['Speed']) +
-                                .21 * int(current['Acceleration']) +
-                                .11 * int(current['Agility']) +
-                                .1 * int(current['Change Of Direction']) +
-                                .05 * int(current['Pursuit'])))
-  ratings[0]['endu'] = int(round(.8 * int(current['Stamina']) +
-                                 .1 * int(current['Toughness']) +
-                                 .05 * int(current['Strength']) +
-                                 .05 * int(current['Injury'])))
-  ratings[0]['thv'] = int(round(.4 * int(current['Awareness']) +
+  ratings[0]['stre'] = int(current['Strength'])
+  ratings[0]['spd'] = int(round(.5 * int(current['Speed']) +
+                                .5 * int(current['Acceleration'])))
+  ratings[0]['endu'] = int(current['Strength'])
+  ratings[0]['thv'] = int(round(.55 * int(current['Awareness']) +
                                 .15 * int(current['Play Action']) +
                                 .15 * int(current['Throw Under Pressure']) +
-                                .1 * int(current['Break Sack']) +
-                                .1 * int(current['BC Vision']) +
-                                .1 * int(current['Throw on the Run'])))
-  ratings[0]['thp'] = int(round(.85 * int(current['Throw Power']) +
-                                .1 * int(current['Strength']) +
-                                .05 * int(current['Throw Accuracy Deep'])))
-  ratings[0]['tha'] = int(round(.4 * int(current['Throw Accuracy Short']) +
-                                .3 * int(current['Throw Accuracy Mid']) +
-                                .15 * int(current['Throw Accuracy Deep']) +
-                                .1 * int(current['Throw on the Run']) +
-                                .05 * int(current['Play Action'])))
+                                .15 * int(current['Throw on the Run'])))
+  ratings[0]['thp'] = int(current['Throw Power'])
+  ratings[0]['tha'] = int(round(.34 * int(current['Throw Accuracy Short']) +
+                                .33 * int(current['Throw Accuracy Mid']) +
+                                .33 * int(current['Throw Accuracy Deep'])
   ratings[0]['bsc'] = int(current['Carrying'])
-  ratings[0]['elu'] = int(round(.25 * int(current['Juke Move']) +
-                               .19 * int(current['Spin Move']) +
-                               .19 * int(current['Change Of Direction']) +
-                               .13 * int(current['Break Tackle']) +
-                               .12 * int(current['Acceleration']) +
-                               .06 * int(current['Agility']) +
-                               .06 * int(current['BC Vision'])))
-  ratings[0]['rtr'] = int(round(.3 * int(current['Short Route Running']) +
-                                .3 * int(current['Medium Route Running']) +
-                                .2 * int(current['Deep Route Running']) +
-                                .1 * int(current['Change Of Direction']) +
-                                .05 * int(current['Agility']) +
-                                .05 * int(current['Release'])))
+  ratings[0]['elu'] = int(round(.58 * int(current['BC Vision']) +
+                               .07 * int(current['Juke Move']) +
+                               .07 * int(current['Spin Move']) +
+                               .07 * int(current['Break Tackle']) +
+                               .07 * int(current['Stiff Arm']) +
+                               .07 * int(current['Trucking']) +
+                               .07 * int(current['Break Sack'])))
+  ratings[0]['rtr'] = int(round(.33 * int(current['Short Route Running']) +
+                                .33 * int(current['Medium Route Running']) +
+                                .17 * int(current['Deep Route Running']) +
+                                .17 * int(current['Release'])))
   ratings[0]['hnd'] = int(round(.75 * int(current['Catching']) +
                                 .18 * int(current['Catch In Traffic']) +
                                 .07 * int(current['Spectacular Catch'])))
@@ -241,22 +225,18 @@ for player in players_dict:
   ratings[0]['pbk'] = int(round(.5 * int(current['Pass Block']) +
                                 .25 * int(current['Pass Block Power']) +
                                 .25 * int(current['Pass Block Finesse'])))
-  ratings[0]['pcv'] = int(round(.4 * int(current['Man Coverage']) +
-                                .4 * int(current['Zone Coverage']) +
-                                .1 * int(current['Press']) +
+  ratings[0]['pcv'] = int(round(.35 * int(current['Man Coverage']) +
+                                .35 * int(current['Zone Coverage']) +
+                                .2 * int(current['Press']) +
                                 .1 * int(current['Play Recognition'])))
-  ratings[0]['tck'] = int(round(.6 * int(current['Tackle']) +
-                                .15 * int(current['Hit Power']) +
-                                .1 * int(current['Pursuit']) +
-                                .1 * int(current['Block Shedding']) +
-                                .03 * int(current['Finesse Moves']) +
-                                .02 * int(current['Power Moves'])))
-  ratings[0]['prs'] = int(round(.6 * int(current['Block Shedding']) +
-                                .3 * int(current['Finesse Moves']) +
-                                .1 * int(current['Power Moves'])))
-  ratings[0]['rns'] = int(round(.6 * int(current['Block Shedding']) +
-                                .2 * int(current['Power Moves']) +
-                                .2 * int(current['Pursuit'])))
+  ratings[0]['tck'] = int(round(.75 * int(current['Tackle']) +
+                                .15 * int(current['Pursuit']) +
+                                .1 * int(current['Play Recognition'])))
+  ratings[0]['prs'] = int(round(.45 * int(current['Power Moves']) +
+                                .45 * int(current['Finesse Moves']) +
+                                .1 * int(current['Play Recognition'])))
+  ratings[0]['rns'] = int(round(.9 * int(current['Block Shedding']) +
+                                .1 * int(current['Play Recognition'])))
   ratings[0]['kpw'] = ratings[0]['ppw'] = int(current['Kick Power'])
   ratings[0]['kac'] = ratings[0]['pac'] = int(current['Kick Accuracy'])
 
@@ -730,5 +710,5 @@ data = {
     "gameAttributes" : gameAttributes
 }
 
-with open("Madden 25 to Football GM.json", "w", encoding="utf-8") as f:
+with open("Madden 27 to Football GM.json", "w", encoding="utf-8") as f:
     json.dump(data, f, indent=4)
