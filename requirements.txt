@@ -1,7 +1,6 @@
 pytest
 requests
-beautifulsoup4
 numpy
 scipy
 pandas
-playwright
+selenium
