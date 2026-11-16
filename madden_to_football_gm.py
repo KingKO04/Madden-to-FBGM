@@ -4,10 +4,13 @@ import json
 import numpy as np
 import scipy.stats as stats
 import pandas as pd
+import chromedriver_autoinstaller
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+
+chromedriver_autoinstaller.install()
 
 def process_player(name, profile_url):
     driver.get(profile_url)
