@@ -1,43 +1,37 @@
 import requests
 import time
-from bs4 import BeautifulSoup
-import concurrent.futures
 import json
 import numpy as np
 import scipy.stats as stats
 import pandas as pd
-import asyncio
-from playwright.sync_api import sync_playwright
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
-
-def process_player(name, profile_url, playwright_instance):
-    browser = playwright_instance.chromium.launch(headless=True, args = ["--disable-http2"])
-    page = browser.new_page()
-
-    page.goto(profile_url, wait_until="domcontentloaded", timeout = 60000)
-    profile_html = page.contet()
-    browser.close()
-
-    profile_soup = BeautifulSoup(profile_html, "html.parser")
+def process_player(name, profile_url):
+    driver.get(profile_url)
 
     # Extract rating names and values
-    rating_names = profile_soup.find_all("span", class_="Stat_label__1Hyo7")
-    rating_values = profile_soup.find_all("span", class_="Stat_value__sh6gl")
-    images = profile_soup.find_all("img", class_="Picture_image__v6C_5")
+    wait = WebDriverWait(driver, timeout = 2)
+    rating_names = wait.until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "Stat_label__1Hyo7")))
+    rating_values = wait.until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "Stat_value__sh6gl")))
+    images = wait.until(EC.presence_of_all_elements_located((By.CLASS_NAME, "Picture_image__v6C_5")))
 
     # Get all elements with the shared class
-    attributes = profile_soup.find_all("span", class_="Typography_typography__BbhVA generated_body2__1oQ_U Typography_margins__Rl7Bs")  # Update class
+    attributes = wait.until(EC.presence_of_all_elements_located((By.XPATH, "//*[@class='Typography_typography__BbhVA generated_body2__1oQ_U Typography_margins__Rl7Bs']")))
 
     # Process attributes in order
     extracted = [attr.text.strip() for attr in attributes]
 
     ratings_dict = {}
-    ratings_dict['Image'] = images[1]["src"]
-    ratings_dict['Position'] = extracted[0]
-    ratings_dict['Team'] = extracted[1]
-    ratings_dict['Height'] = extracted[2]
-    ratings_dict['Weight'] = extracted[3]
-    ratings_dict['Archetype'] = extracted[4]
+    ratings_dict['Name'] = name
+    ratings_dict['Image'] = images[1].get_attribute("src")
+    ratings_dict['Position'] = extracted[1]
+    ratings_dict['Team'] = extracted[2]
+    ratings_dict['Height'] = extracted[3]
+    ratings_dict['Weight'] = extracted[4]
+    ratings_dict['Archetype'] = extracted[5]
     ratings_dict['College'] = extracted[-4]
     ratings_dict['Age'] = extracted[-3]
     ratings_dict['Draft Year'] = extracted[-2]
@@ -46,7 +40,7 @@ def process_player(name, profile_url, playwright_instance):
         if r_name.text.strip() == "General":
             continue
         ratings_dict[r_name.text.strip()] = r_value.text.strip()
-    players_dict[name] = ratings_dict
+    players_dict[profile_url] = ratings_dict
     time.sleep(1)
 
     return name, ratings_dict
@@ -57,47 +51,29 @@ def match_distribution(target_data, source_data):
       stats.rankdata(np.array(target_data)) / len(np.array(target_data)) * 100
       )
 
-base_url = "https://www.ea.com"
 ratings_url_template = "https://www.ea.com/en/games/madden-nfl/ratings?page={}"
+driver = webdriver.Chrome()
 
 # Fetch the main ratings page
-headers = {"User-Agent": "Mozilla/5.0"}
-
 player_profiles = {}
 players_dict = {}
 
-with sync_playwright() as p:
-  browser = p.chromium.launch(headless=True)
-  page = browser.new_page()
+for page_num in range(1, 21):
+  ratings_url = ratings_url_template.format(page_num)
+  driver.get(ratings_url)
 
-  for page_num in range(1, 21):
-    ratings_url = ratings_url_template.format(page_num)
-    page.goto(ratings_url, wait_until="domcontentloaded")
-    page.wait_for_selector("a.Table_profileCellAnchor__3zq_D", timeout=10000)
+  # Find player profile links
+  wait = WebDriverWait(driver, timeout = 2)
+  players = wait.until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "Table_profileCellAnchor__3zq_D")))
 
-    soup = BeautifulSoup(page.content(), "html.parser")
-    players = soup.find_all("a", class_= "Table_profileCellAnchor__3zq_D")
-
-    for player in players:
+  for player in players:
       name = player.text.strip()
-      profile_link = base_url + player["href"]
-      player_profiles[name] = profile_link
+      profile_link = player.get_attribute("href")
+      player_profiles[profile_link] = name
 
-  browser.close()
-
-with sync_playwright() as p:
-  def worker(item):
-    name, profile_url = item
-    pw = sync_playwright().start()
-    res_name, ratings = process_player(name, profile_url, pw)
-    return res_name, ratings
-
-  with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-      futures = [executor.submit(worker, item) for item in player_profiles.items()]
-
-      for future in concurrent.futures.as_completed(futures):
-          name, ratings_dict = future.result()
-          players_dict[name] = ratings_dict
+for profile_url, name in player_profiles.items():
+  name, ratings_dict = process_player(name, profile_url)
+  players_dict[profile_url] = ratings_dict
 
 fbgm_players = []
 for player in players_dict:
@@ -105,11 +81,11 @@ for player in players_dict:
   fbgm_players.append({})
   i = len(fbgm_players) - 1
 
-  name = player.split(' ', 1)
+  name = current['Name'].split(' ', 1)
   fbgm_players[i]['firstName'] = name[0]
   fbgm_players[i]['lastName'] = name[1]
-  fbgm_players[i]['born'] = {"year" : 2026 - int(players_dict[player]['Age'])}
-  fbgm_players[i]['draft'] = {"year" : 2026 - int(players_dict[player]['Draft Year'])}
+  fbgm_players[i]['born'] = {"year" : 2025 - int(players_dict[player]['Age'])}
+  fbgm_players[i]['draft'] = {"year" : 2025 - int(players_dict[player]['Draft Year'])}
   fbgm_players[i]['college'] = current['College']
 
   match current['Team']:
@@ -213,7 +189,6 @@ for player in players_dict:
 
   ratings = [{}]
   ratings[0]['hgt'] = int(round((fbgm_players[i]['hgt'] - 64) / 18 * 100))
-  ratings[0]['stre'] = int(current['Strength'])
   ratings[0]['spd'] = int(round(.5 * int(current['Speed']) +
                                 .5 * int(current['Acceleration'])))
   ratings[0]['endu'] = int(current['Strength'])
