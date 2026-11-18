@@ -189,9 +189,10 @@ for player in players_dict:
 
   ratings = [{}]
   ratings[0]['hgt'] = int(round((fbgm_players[i]['hgt'] - 64) / 18 * 100))
+  ratings[0]['stre'] = int(current['Strength'])
   ratings[0]['spd'] = int(round(.5 * int(current['Speed']) +
                                 .5 * int(current['Acceleration'])))
-  ratings[0]['endu'] = int(current['Strength'])
+  ratings[0]['endu'] = int(current['Stamina'])
   ratings[0]['thv'] = int(round(.55 * int(current['Awareness']) +
                                 .15 * int(current['Play Action']) +
                                 .15 * int(current['Throw Under Pressure']) +
@@ -200,14 +201,13 @@ for player in players_dict:
   ratings[0]['tha'] = int(round(.34 * int(current['Throw Accuracy Short']) +
                                 .33 * int(current['Throw Accuracy Mid']) +
                                 .33 * int(current['Throw Accuracy Deep'])))
-  ratings[0]['bsc'] = int(current['Carrying'])
-  ratings[0]['elu'] = int(round(.58 * int(current['BC Vision']) +
-                               .07 * int(current['Juke Move']) +
-                               .07 * int(current['Spin Move']) +
-                               .07 * int(current['Break Tackle']) +
-                               .07 * int(current['Stiff Arm']) +
-                               .07 * int(current['Trucking']) +
-                               .07 * int(current['Break Sack'])))
+  ratings[0]['elu'] = int(round(.75 * int(current['Break Tackle']) +
+                               .05 * int(current['Juke Move']) +
+                               .05 * int(current['Spin Move']) +
+                               .05 * int(current['Stiff Arm']) +
+                               .05 * int(current['Trucking']) +
+                               .025 * int(current['Break Tackle']) +
+                               .025 * int(current['Break Sack'])))
   ratings[0]['rtr'] = int(round(.33 * int(current['Short Route Running']) +
                                 .33 * int(current['Medium Route Running']) +
                                 .17 * int(current['Deep Route Running']) +
@@ -215,13 +215,14 @@ for player in players_dict:
   ratings[0]['hnd'] = int(round(.75 * int(current['Catching']) +
                                 .18 * int(current['Catch In Traffic']) +
                                 .07 * int(current['Spectacular Catch'])))
+  ratings[0]['bsc'] = int(current['Carrying'])
+  ratings[0]['pbk'] = int(round(.5 * int(current['Pass Block']) +
+                                .25 * int(current['Pass Block Power']) +
+                                .25 * int(current['Pass Block Finesse'])))
   ratings[0]['rbk'] = int(round(.4 * int(current['Run Block']) +
                                 .2 * int(current['Run Block Power']) +
                                 .2 * int(current['Run Block Finesse']) +
                                 .2 * int(current['Lead Block'])))
-  ratings[0]['pbk'] = int(round(.5 * int(current['Pass Block']) +
-                                .25 * int(current['Pass Block Power']) +
-                                .25 * int(current['Pass Block Finesse'])))
   ratings[0]['pcv'] = int(round(.35 * int(current['Man Coverage']) +
                                 .35 * int(current['Zone Coverage']) +
                                 .2 * int(current['Press']) +
@@ -239,9 +240,9 @@ for player in players_dict:
 
   fbgm_players[i]['ratings'] = ratings
 
-player_ratings = pd.read_csv("PlayerRatings/PlayerRatings.csv")
+player_ratings = pd.read_csv("Player Ratings/PlayerRatings.csv")
 for i in range(1, 19):
-  temp = pd.read_csv(f"PlayerRatings/PlayerRatings ({i}).csv")
+  temp = pd.read_csv(f"Player Ratings/PlayerRatings ({i}).csv")
   player_ratings = pd.concat([player_ratings, temp], ignore_index=True)
 
 player_ratings = player_ratings.iloc[:, range(9, 29)]
@@ -293,7 +294,7 @@ divs = [
 ]
 
 gameAttributes = {
-    "completionFactor": .95,
+    "completionFactor": .9,
     "confs": confs,
     "divs": divs,
     "draftAges": [20, 26],
@@ -302,7 +303,8 @@ gameAttributes = {
     "draftPickAutoContractRounds": 7,
     "fantasyPoints": "ppr",
     "fourthDownFactor": 1.15,
-    "intFactor": .9,
+    "fumbleFactor": 0.67,
+    "intFactor": 1.1,
     "luxuryPayroll": 330000,
     "maxContract": 60000,
     "maxRosterSize": 53,
@@ -310,6 +312,7 @@ gameAttributes = {
     "minPayroll": 250000,
     "minRosterSize": 46,
     "numSeasonsFutureDraftPicks": 3,
+    "passFactor": 0.95,
     "rookieContractLengths": [4],
     "salaryCap": 280000
 }
