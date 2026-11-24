@@ -13,7 +13,7 @@ def process_player(name, profile_url):
     driver.get(profile_url)
 
     # Extract rating names and values
-    wait = WebDriverWait(driver, timeout = 2)
+    wait = WebDriverWait(driver, timeout = 4)
     rating_names = wait.until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "Stat_label__1Hyo7")))
     rating_values = wait.until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "Stat_value__sh6gl")))
     images = wait.until(EC.presence_of_all_elements_located((By.CLASS_NAME, "Picture_image__v6C_5")))
@@ -52,7 +52,7 @@ def match_distribution(target_data, source_data):
       )
 
 ratings_url_template = "https://www.ea.com/en/games/madden-nfl/ratings?page={}"
-driver = webdriver.Chrome()
+driver = webdriver.Edge()
 
 # Fetch the main ratings page
 player_profiles = {}
@@ -294,6 +294,72 @@ divs = [
 ]
 
 gameAttributes = {
+    "awards": [
+        {
+            "shortName": "MVP",
+            "name": "Most Valuable Player",
+            "formula": "0.07 * (pssYds + ydsFromScrimmage - pssSkYds + 130 * defSk + 70 * defPssDef + 100 * (defTckLoss - defSk) - penYds) + 6 * (pssTD + totTD + 0.8 * (defInt + 0.5 * defFmbFrc + defFmbRec - 0.5 * fmb - pssInt - defIntTD - defFmbTD)) + xp + 3 * fg - 3.4 * (fga - fg) + 4 * defSft",
+	    "formulaByPos": {
+		"QB": "winp * (0.07 * (pssYds + ydsFromScrimmage - pssSkYds + 130 * defSk + 70 * defPssDef + 100 * (defTckLoss - defSk) - penYds) + 6 * (pssTD + totTD + 0.8 * (defInt + 0.5 * defFmbFrc + defFmbRec - 0.5 * fmb - pssInt - defIntTD - defFmbTD)) + xp + 3 * fg - 3.4 * (fga - fg) + 4 * defSft)"
+	    },
+            "showStats": "overall",
+            "actAs": "mvp"
+        },
+        {
+            "shortName": "OPOY",
+            "name": "Offensive Player of the Year",
+            "formula": "0.07 * (pssYds / 2 + ydsFromScrimmage - pssSkYds - penYds) + 6 * (pssTD / 2 + rusTD + recTD - 0.8 * (0.5 * fmb + pssInt))",
+            "showStats": "overall",
+            "opoyFormula": "0.07 * (pssYds / 2 + ydsFromScrimmage - pssSkYds - penYds) + 6 * (pssTD / 2 + rusTD + recTD - 0.8 * (0.5 * fmb + pssInt))"
+        },
+        {
+            "shortName": "POY",
+            "name": "Protector of the Year",
+            "formula": "(pbw+rbw)/(0.1+pba+rba)*(pba+rba)^(1/2)",
+            "showStats": "blocking"
+        },
+        {
+            "shortName": "DPOY",
+            "name": "Defensive Player of the Year",
+            "formula": "0.07 * (130 * defSk + 70 * defPssDef + 100 * (defTckLoss - defSk) - penYds) + 6 * (defIntTD + defFmbTD + 0.8 * (defInt + 0.5 * defFmbFrc + defFmbRec - defIntTD - defFmbTD)) + 4 * defSft",
+            "showStats": "defense"
+        },
+        {
+            "shortName": "OROY",
+            "name": "Offensive Rookie of the Year",
+            "formula": "0.07 * (pssYds / 2 + ydsFromScrimmage - pssSkYds / 2 - penYds) + 6 * (pssTD / 2 + rusTD + recTD - 0.8 * (0.5 * fmb + pssInt))",
+            "showStats": "overall",
+            "rookie": True,
+            "actAs": "roy"
+        },
+        {
+            "shortName": "DROY",
+            "name": "Defensive Rookie of the Year",
+            "formula": "0.07 * (130 * defSk + 70 * defPssDef + 100 * (defTckLoss - defSk) - penYds) + 6 * (defIntTD + defFmbTD + 0.8 * (defInt + 0.5 * defFmbFrc + defFmbRec - defIntTD - defFmbTD)) + 4 * defSft",
+            "showStats": "defense",
+            "rookie": True,
+            "actAs": "roy"
+        },
+        {
+            "shortName": "SBMVP",
+            "name": "Super Bowl MVP",
+            "formula": "won * (0.07 * (pssYds + ydsFromScrimmage - pssSkYds + 130 * defSk + 70 * defPssDef + 100 * (defTckLoss - defSk) - penYds) + 6 * (pssTD + totTD + 0.8 * (defInt + 0.5 * defFmbFrc + defFmbRec - 0.5 * fmb - pssInt - defIntTD - defFmbTD)) + xp + 3 * fg - 3.4 * (fga - fg) + 4 * defSft)",
+            "statRange": -1,
+            "showStats": "overall"
+        },
+        {
+            "shortName": "AP",
+            "name": "All-Pro",
+            "formula": "0.07 * (pssYds + ydsFromScrimmage - pssSkYds + 130 * defSk + 70 * defPssDef + 100 * (defTckLoss - defSk) - penYds) + 6 * (pssTD + totTD + 0.8 * (defInt + 0.5 * defFmbFrc + defFmbRec - 0.5 * fmb - pssInt - defIntTD - defFmbTD)) + xp + 3 * fg - 3.4 * (fga - fg) + 4 * defSft",
+            "formulaByPos": {
+		"QB": "winp * (0.07 * (pssYds + ydsFromScrimmage - pssSkYds + 130 * defSk + 70 * defPssDef + 100 * (defTckLoss - defSk) - penYds) + 6 * (pssTD + totTD + 0.8 * (defInt + 0.5 * defFmbFrc + defFmbRec - 0.5 * fmb - pssInt - defIntTD - defFmbTD)) + xp + 3 * fg - 3.4 * (fga - fg) + 4 * defSft)",
+                "OL": "(pbw+rbw)/(0.1+pba+rba)*(pba+rba)^(1/2)",
+                "P": "pntYds * (pntIn20 - pntTB)"
+            },
+            "showStats": "overall",
+            "numTeams": 2
+        }
+    ],
     "completionFactor": .9,
     "confs": confs,
     "divs": divs,
