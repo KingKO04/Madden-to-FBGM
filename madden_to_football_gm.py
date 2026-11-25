@@ -360,7 +360,7 @@ gameAttributes = {
             "numTeams": 2
         }
     ],
-    "completionFactor": .9,
+    "completionFactor": .95,
     "confs": confs,
     "divs": divs,
     "draftAges": [20, 26],
@@ -369,8 +369,6 @@ gameAttributes = {
     "draftPickAutoContractRounds": 7,
     "fantasyPoints": "ppr",
     "fourthDownFactor": 1.15,
-    "fumbleFactor": 0.67,
-    "intFactor": 1.1,
     "luxuryPayroll": 330000,
     "maxContract": 60000,
     "maxRosterSize": 53,
@@ -378,7 +376,7 @@ gameAttributes = {
     "minPayroll": 250000,
     "minRosterSize": 46,
     "numSeasonsFutureDraftPicks": 3,
-    "passFactor": 0.95,
+    "passFactor": 0.9,
     "rookieContractLengths": [4],
     "salaryCap": 280000
 }
