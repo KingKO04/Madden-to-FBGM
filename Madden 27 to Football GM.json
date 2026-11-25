@@ -82986,7 +82986,7 @@
                 "numTeams": 2
             }
         ],
-        "completionFactor": 0.9,
+        "completionFactor": 0.95,
         "confs": [
             {
                 "cid": 0,
@@ -83048,8 +83048,6 @@
         "draftPickAutoContractRounds": 7,
         "fantasyPoints": "ppr",
         "fourthDownFactor": 1.15,
-        "fumbleFactor": 0.67,
-        "intFactor": 1.1,
         "luxuryPayroll": 330000,
         "maxContract": 60000,
         "maxRosterSize": 53,
@@ -83057,7 +83055,7 @@
         "minPayroll": 250000,
         "minRosterSize": 46,
         "numSeasonsFutureDraftPicks": 3,
-        "passFactor": 0.95,
+        "passFactor": 0.9,
         "rookieContractLengths": [
             4
         ],
